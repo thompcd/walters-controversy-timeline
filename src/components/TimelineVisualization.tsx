@@ -532,10 +532,10 @@ export default function TimelineVisualization() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             <div className="rounded-lg p-4 md:p-6 border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-800 shadow-sm hover:shadow-md transition-shadow">
-              <p className="text-slate-600 dark:text-slate-400 text-sm font-semibold mb-2">Grade</p>
+              <p className="text-slate-600 dark:text-slate-400 text-sm font-semibold mb-2">Test Scores</p>
               <p className="text-3xl md:text-4xl font-bold mb-2">D</p>
               <p className="text-slate-600 dark:text-slate-400 text-xs md:text-sm">
-                State Academic Achievement 2024-25 (Lowest in Decade)
+                State Academic Achievement Score 2024-25
               </p>
             </div>
 
