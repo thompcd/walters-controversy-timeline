@@ -924,6 +924,103 @@ export default function TimelineVisualization() {
           </div>
         </div>
       </div>
+
+      {/* Sources Section */}
+      <div className="bg-gradient-to-b from-slate-50 to-white dark:from-slate-800 dark:to-slate-900 border-t border-slate-200 dark:border-slate-800 py-8 md:py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-heading font-bold mb-2 text-slate-900 dark:text-white">Research Sources</h2>
+          <p className="text-slate-600 dark:text-slate-400 text-sm md:text-base mb-8 max-w-2xl">
+            This timeline is compiled from publicly available news reports, court documents, government records, and official statements from credible sources.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            {/* Major News & Media */}
+            <div className="rounded-lg p-4 md:p-6 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md transition-shadow">
+              <h3 className="font-heading font-bold text-slate-900 dark:text-white mb-3 text-lg">📰 Major News Outlets</h3>
+              <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+                <li><a href="https://www.pbs.org/newshour" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">PBS NewsHour</a></li>
+                <li><a href="https://www.nbcnews.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">NBC News</a></li>
+                <li><a href="https://www.msnbc.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">MSNBC</a></li>
+                <li><a href="https://www.npr.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">NPR</a></li>
+                <li><a href="https://www.thehill.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">The Hill</a></li>
+                <li><a href="https://www.74million.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">The 74 Million</a></li>
+              </ul>
+            </div>
+
+            {/* Oklahoma Local & State */}
+            <div className="rounded-lg p-4 md:p-6 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md transition-shadow">
+              <h3 className="font-heading font-bold text-slate-900 dark:text-white mb-3 text-lg">🏛️ Oklahoma Sources</h3>
+              <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+                <li><a href="https://www.kosu.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">KOSU (Oklahoma NPR)</a></li>
+                <li><a href="https://www.oklahomawatch.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Oklahoma Watch</a></li>
+                <li><a href="https://www.oklahomavoice.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Oklahoma Voice</a></li>
+                <li>KOCO, KOKH, Fox 23 (Local TV News)</li>
+                <li><a href="https://okappleseed.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Oklahoma Appleseed Center</a></li>
+                <li><a href="https://www.wikipedia.org/wiki/Ryan_Walters_(politician)" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Wikipedia: Ryan Walters</a></li>
+              </ul>
+            </div>
+
+            {/* Legal & Government */}
+            <div className="rounded-lg p-4 md:p-6 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md transition-shadow">
+              <h3 className="font-heading font-bold text-slate-900 dark:text-white mb-3 text-lg">⚖️ Legal & Government</h3>
+              <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+                <li>Oklahoma Supreme Court Decisions</li>
+                <li>Oklahoma Ethics Commission Records</li>
+                <li>State Education Department (OSDE)</li>
+                <li>Oklahoma Attorney General Statements</li>
+                <li>State Board of Education Minutes</li>
+                <li>U.S. Department of Education</li>
+              </ul>
+            </div>
+
+            {/* Advocacy & Civil Rights */}
+            <div className="rounded-lg p-4 md:p-6 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md transition-shadow">
+              <h3 className="font-heading font-bold text-slate-900 dark:text-white mb-3 text-lg">🤝 Advocacy Organizations</h3>
+              <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+                <li><a href="https://www.thetrevorproject.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">The Trevor Project</a></li>
+                <li><a href="https://www.hrc.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Human Rights Campaign</a></li>
+                <li><a href="https://www.naacp.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">NAACP</a></li>
+                <li><a href="https://www.glaad.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">GLAAD</a></li>
+                <li><a href="https://www.everylibrary.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">EveryLibrary</a></li>
+                <li><a href="https://www.aclu.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">ACLU</a></li>
+              </ul>
+            </div>
+
+            {/* K-12 & Education */}
+            <div className="rounded-lg p-4 md:p-6 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md transition-shadow">
+              <h3 className="font-heading font-bold text-slate-900 dark:text-white mb-3 text-lg">📚 Education Sources</h3>
+              <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+                <li><a href="https://www.k12dive.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">K-12 Dive</a></li>
+                <li><a href="https://www.edweek.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Education Week</a></li>
+                <li><a href="https://www.aft.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">American Federation of Teachers</a></li>
+                <li>National Education Association</li>
+                <li>Teacher Freedom Alliance</li>
+                <li>Freedom Foundation</li>
+              </ul>
+            </div>
+
+            {/* Media & Analysis */}
+            <div className="rounded-lg p-4 md:p-6 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md transition-shadow">
+              <h3 className="font-heading font-bold text-slate-900 dark:text-white mb-3 text-lg">📺 News & Analysis</h3>
+              <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+                <li><a href="https://www.nytimes.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">New York Times</a></li>
+                <li><a href="https://www.advocate.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">The Advocate</a></li>
+                <li><a href="https://www.foxnews.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Fox News</a></li>
+                <li><a href="https://www.theonion.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">The Onion</a></li>
+                <li>Black Wall Street Times</li>
+                <li>Freedom Oklahoma</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Footer Note */}
+          <div className="mt-8 md:mt-12 p-4 md:p-6 rounded-lg bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800">
+            <p className="text-sm md:text-base text-slate-700 dark:text-slate-300">
+              <span className="font-semibold text-slate-900 dark:text-white">Data Sources Note:</span> All events are sourced from publicly available documents including news reports, court records, official government statements, and verified media coverage. Multiple sources were used for significant events to ensure accuracy and provide comprehensive context.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
