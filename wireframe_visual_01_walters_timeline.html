@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe #1: The Ryan Walters Era Timeline</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .wireframe-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .meta-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .meta-header h1 {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+        
+        .meta-header .subtitle {
+            font-size: 16px;
+            opacity: 0.95;
+            margin-bottom: 20px;
+        }
+        
+        .score-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        /* Main Visualization */
+        .viz-container {
+            background: white;
+            padding: 60px 40px;
+        }
+        
+        .viz-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .viz-header h2 {
+            font-size: 48px;
+            color: #667eea;
+            margin-bottom: 12px;
+            font-weight: 800;
+        }
+        
+        .viz-header .subtitle {
+            font-size: 24px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        
+        .viz-header .date-range {
+            font-size: 18px;
+            color: #999;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+        }
+        
+        .timeline-event {
+            position: relative;
+            margin-bottom: 80px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .timeline-event:nth-child(odd) {
+            flex-direction: row;
+        }
+        
+        .timeline-event:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-date {
+            width: 45%;
+            padding: 20px;
+            text-align: right;
+        }
+        
+        .timeline-event:nth-child(even) .timeline-date {
+            text-align: left;
+        }
+        
+        .timeline-date .date-text {
+            font-size: 16px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+        
+        .timeline-marker {
+            width: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .timeline-dot {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px #667eea;
+        }
+        
+        .timeline-dot.controversy {
+            background: #f44336;
+            box-shadow: 0 0 0 4px #f44336;
+        }
+        
+        .timeline-dot.policy {
+            background: #2196f3;
+            box-shadow: 0 0 0 4px #2196f3;
+        }
+        
+        .timeline-dot.legal {
+            background: #ff9800;
+            box-shadow: 0 0 0 4px #ff9800;
+        }
+        
+        .timeline-dot.resignation {
+            background: #9c27b0;
+            box-shadow: 0 0 0 4px #9c27b0;
+        }
+        
+        .timeline-content {
+            width: 45%;
+            padding: 20px;
+        }
+        
+        .event-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-left: 6px solid #667eea;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        
+        .event-card.controversy {
+            border-left-color: #f44336;
+            background: linear-gradient(to right, #ffebee 0%, white 20%);
+        }
+        
+        .event-card.policy {
+            border-left-color: #2196f3;
+            background: linear-gradient(to right, #e3f2fd 0%, white 20%);
+        }
+        
+        .event-card.legal {
+            border-left-color: #ff9800;
+            background: linear-gradient(to right, #fff3e0 0%, white 20%);
+        }
+        
+        .event-card.resignation {
+            border-left-color: #9c27b0;
+            background: linear-gradient(to right, #f3e5f5 0%, white 20%);
+        }
+        
+        .event-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+        
+        .event-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+        
+        .event-description {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .event-impact {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 2px solid rgba(0,0,0,0.05);
+        }
+        
+        .impact-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #999;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        
+        .impact-stat {
+            font-size: 14px;
+            color: #f44336;
+            font-weight: 600;
+        }
+        
+        /* Stats Panel */
+        .stats-panel {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 50px 40px;
+            color: white;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .stat-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+        
+        /* Legend */
+        .legend {
+            background: #f9f9f9;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .legend-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .legend-items {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .legend-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+        }
+        
+        .legend-text {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        /* Design Notes */
+        .design-notes {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 30px;
+            margin: 40px;
+        }
+        
+        .design-notes h3 {
+            color: #f57c00;
+            margin-bottom: 16px;
+        }
+        
+        .design-notes ul {
+            margin-left: 20px;
+        }
+        
+        .design-notes li {
+            margin: 12px 0;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-event {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+            }
+            
+            .timeline-date,
+            .timeline-marker,
+            .timeline-content {
+                width: 100%;
+                text-align: left !important;
+            }
+            
+            .timeline-marker {
+                position: absolute;
+                left: 0;
+            }
+            
+            .timeline-content {
+                padding-left: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wireframe-container">
+        <!-- Meta Header -->
+        <div class="meta-header">
+            <h1>WIREFRAME #1</h1>
+            <p class="subtitle">The Ryan Walters Era: A Timeline of Controversy</p>
+            <div class="score-badge">SCORE: 89/100</div>
+        </div>
+        
+        <!-- Main Visualization -->
+        <div class="viz-container">
+            <div class="viz-header">
+                <h2>The Ryan Walters Era</h2>
+                <p class="subtitle">A Timeline of Controversy</p>
+                <p class="date-range">January 2023 - September 2025 • 33 Months of Turmoil</p>
+            </div>
+            
+            <div class="timeline">
+                <!-- Event 1: Inauguration -->
+                <div class="timeline-event">
+                    <div class="timeline-date">
+                        <div class="date-text">JAN 2023</div>
+                    </div>
+                    <div class="timeline-marker">
+                        <div class="timeline-dot controversy"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="event-card controversy">
+                            <div class="event-icon">🔴</div>
+                            <div class="event-title">Inauguration & Immediate Controversy</div>
+                            <div class="event-description">
+                                Walters sworn in as State Superintendent. At first board meeting, leads members to remove teacher pay raise from department's proposed budget despite critical teacher shortage.
+                            </div>
+                            <div class="event-impact">
+                                <div class="impact-label">Impact</div>
+                                <div class="impact-stat">First month sets confrontational tone</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Event 2: Teacher Union Comments -->
+                <div class="timeline-event">
+                    <div class="timeline-date">
+                        <div class="date-text">JULY 2023</div>
+                    </div>
+                    <div class="timeline-marker">
+                        <div class="timeline-dot controversy"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="event-card controversy">
+                            <div class="event-icon">💥</div>
+                            <div class="event-title">"Terrorist Organization" Comment</div>
+                            <div class="event-description">
+                                Calls Oklahoma teachers union a "terrorist organization," drawing national condemnation from educators and civil rights groups. Doubles down on rhetoric in subsequent interviews.
+                            </div>
+                            <div class="event-impact">
+                                <div class="impact-label">Impact</div>
+                                <div class="impact-stat">Relationship with teachers irreparably damaged</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Event 3: Bible Mandate -->
+                <div class="timeline-event">
+                    <div class="timeline-date">
+                        <div class="date-text">JUNE 2024</div>
+                    </div>
+                    <div class="timeline-marker">
+                        <div class="timeline-dot policy"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="event-card policy">
+                            <div class="event-icon">📖</div>
+                            <div class="event-title">Bible Mandate Announced</div>
+                            <div class="event-description">
+                                Orders all public schools to teach the Bible in grades 5-12. Requests $3M+ for Trump-branded Bibles. Bibles discovered to be missing Constitutional amendments 11-27, including those abolishing slavery.
+                            </div>
+                            <div class="event-impact">
+                                <div class="impact-label">Impact</div>
+                                <div class="impact-stat">Multiple lawsuits filed; separation of church-state violations alleged</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Event 4: TV Scandal -->
+                <div class="timeline-event">
+                    <div class="timeline-date">
+                        <div class="date-text">JULY 2024</div>
+                    </div>
+                    <div class="timeline-marker">
+                        <div class="timeline-dot controversy"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="event-card controversy">
+                            <div class="event-icon">📺</div>
+                            <div class="event-title">TV Nudity Scandal</div>
+                            <div class="event-description">
+                                State Board of Education members report seeing nude content from 1985 Jackie Chan film "The Protector" on TV in Walters' office during official meeting. Walters calls reports "desperate lies."
+                            </div>
+                            <div class="event-impact">
+                                <div class="impact-label">Impact</div>
+                                <div class="impact-stat">Investigation launched; later cleared of criminal charges</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Event 5: Trump Prayer Video -->
+                <div class="timeline-event">
+                    <div class="timeline-date">
+                        <div class="date-text">NOV 2024</div>
+                    </div>
+                    <div class="timeline-marker">
+                        <div class="timeline-dot policy"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="event-card policy">
+                            <div class="event-icon">🙏</div>
+                            <div class="event-title">Mandatory Trump Prayer Video</div>
+                            <div class="event-description">
+                                Emails school superintendents requiring students watch video of Walters praying for "President Trump's Team" and against political opponents. Districts question legal authority for mandate.
+                            </div>
+                            <div class="event-impact">
+                                <div class="impact-label">Impact</div>
+                                <div class="impact-stat">Attorney General says Walters lacks legal authority</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Event 6: Board Split -->
+                <div class="timeline-event">
+                    <div class="timeline-date">
+                        <div class="date-text">FEB 2025</div>
+                    </div>
+                    <div class="timeline-marker">
+                        <div class="timeline-dot controversy"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="event-card controversy">
+                            <div class="event-icon">⚔️</div>
+                            <div class="event-title">Stitt Fires Board Members</div>
+                            <div class="event-description">
+                                Gov. Kevin Stitt, once Walters' ally, fires three State Board of Education members who supported Walters. Cites "disappointing NAEP scores" and "needless political drama." Walters accuses Stitt of being "deep state."
+                            </div>
+                            <div class="event-impact">
+                                <div class="impact-label">Impact</div>
+                                <div class="impact-stat">Public split between Republican governor and superintendent</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Event 7: Supreme Court Ruling -->
+                <div class="timeline-event">
+                    <div class="timeline-date">
+                        <div class="date-text">FEB 2025</div>
+                    </div>
+                    <div class="timeline-marker">
+                        <div class="timeline-dot legal"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="event-card legal">
+                            <div class="event-icon">⚖️</div>
+                            <div class="event-title">Supreme Court Overturns Social Studies Standards</div>
+                            <div class="event-description">
+                                Oklahoma Supreme Court blocks controversial social studies standards requiring teaching "discrepancies" in 2020 election and COVID-19 "Chinese lab" origin. Rules Walters violated Open Meetings Act by changing standards without public notice.
+                            </div>
+                            <div class="event-impact">
+                                <div class="impact-label">Impact</div>
+                                <div class="impact-stat">Major policy defeat; back to 2019 standards</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Event 8: Ethics Violations -->
+                <div class="timeline-event">
+                    <div class="timeline-date">
+                        <div class="date-text">AUG 2025</div>
+                    </div>
+                    <div class="timeline-marker">
+                        <div class="timeline-dot legal"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="event-card legal">
+                            <div class="event-icon">💰</div>
+                            <div class="event-title">Ethics Violation Settlements</div>
+                            <div class="event-description">
+                                Pays $23,300 to settle ethics complaints over campaign finance violations and using state social media for partisan activities. Multiple additional investigations ongoing.
+                            </div>
+                            <div class="event-impact">
+                                <div class="impact-label">Impact</div>
+                                <div class="impact-stat">Financial penalties; reputation further damaged</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Event 9: Resignation Announcement -->
+                <div class="timeline-event">
+                    <div class="timeline-date">
+                        <div class="date-text">SEPT 24, 2025</div>
+                    </div>
+                    <div class="timeline-marker">
+                        <div class="timeline-dot resignation"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="event-card resignation">
+                            <div class="event-icon">🚪</div>
+                            <div class="event-title">Resignation Announced on Fox News</div>
+                            <div class="event-description">
+                                Announces on Fox News @ Night that he will resign to become CEO of Teacher Freedom Alliance, an anti-union organization he promoted while in office. Vows to "destroy the teachers unions."
+                            </div>
+                            <div class="event-impact">
+                                <div class="impact-label">Impact</div>
+                                <div class="impact-stat">Even Republican AG calls tenure "an embarrassment"</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Event 10: Official Resignation -->
+                <div class="timeline-event">
+                    <div class="timeline-date">
+                        <div class="date-text">SEPT 30, 2025</div>
+                    </div>
+                    <div class="timeline-marker">
+                        <div class="timeline-dot resignation"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="event-card resignation">
+                            <div class="event-icon">✋</div>
+                            <div class="event-title">Walters Officially Resigns</div>
+                            <div class="event-description">
+                                Leaves office with more than a year remaining in term. Lindel Fields appointed as interim superintendent. Fields immediately begins reversing controversial policies and rebuilding relationships with educators.
+                            </div>
+                            <div class="event-impact">
+                                <div class="impact-label">Impact</div>
+                                <div class="impact-stat">New ethics investigation launched over conflict of interest</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stats Panel -->
+        <div class="stats-panel">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">D</div>
+                    <div class="stat-label">State Grade for Academic Achievement (2024-25)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">$23,300</div>
+                    <div class="stat-label">Paid in Ethics Violation Settlements</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24%</div>
+                    <div class="stat-label">Teacher Turnover Rate (Highest in Decade)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">33</div>
+                    <div class="stat-label">Months of Controversy & Turmoil</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Legend -->
+        <div class="legend">
+            <div class="legend-title">Event Categories</div>
+            <div class="legend-items">
+                <div class="legend-item">
+                    <div class="legend-dot" style="background: #f44336;"></div>
+                    <div class="legend-text">Controversies & Conflicts</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot" style="background: #2196f3;"></div>
+                    <div class="legend-text">Policy Decisions</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot" style="background: #ff9800;"></div>
+                    <div class="legend-text">Legal Issues</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot" style="background: #9c27b0;"></div>
+                    <div class="legend-text">Resignation</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Design Notes -->
+        <div class="design-notes">
+            <h3>🎨 Design & Implementation Notes</h3>
+            <ul>
+                <li><strong>Interactive Timeline:</strong> Each event card is clickable to reveal expanded details, news quotes, and related articles</li>
+                <li><strong>Scroll Animation:</strong> Events fade in as user scrolls down, creating progressive narrative revelation</li>
+                <li><strong>Color Coding:</strong> Red (controversies), Blue (policies), Orange (legal), Purple (resignation) for quick visual categorization</li>
+                <li><strong>Mobile Optimized:</strong> Timeline collapses to single column on mobile devices for LinkedIn app viewing</li>
+                <li><strong>Test Score Overlay:</strong> Optional toggle to show academic performance metrics declining alongside timeline</li>
+                <li><strong>Share Points:</strong> Each event can be individually shared as a card on social media</li>
+                <li><strong>Data Sources:</strong> Links to original news articles, court documents, and official statements for credibility</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
