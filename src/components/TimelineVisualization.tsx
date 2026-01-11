@@ -303,69 +303,69 @@ export default function TimelineVisualization() {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
       {/* Header Banner */}
       <div className="sticky top-0 z-40 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-700">
-        <div className="max-w-6xl mx-auto px-4 py-6">
-          <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-2">
+        <div className="max-w-6xl mx-auto px-4 py-3 md:py-6">
+          <h1 className="text-2xl md:text-4xl font-bold text-slate-900 dark:text-white mb-1 md:mb-2">
             The Ryan Walters Era
           </h1>
-          <p className="text-lg text-slate-600 dark:text-slate-300 mb-4">
+          <p className="text-xs md:text-lg text-slate-600 dark:text-slate-300 mb-3 md:mb-4">
             A Timeline of Controversy, Policy Crisis, and Early Exit
           </p>
 
           {/* Context Callout */}
-          <div className="flex gap-4 text-sm mb-6 flex-wrap">
-            <div className="px-4 py-3 bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-800 rounded-lg">
-              <p className="font-semibold text-red-900 dark:text-red-300">
+          <div className="flex gap-2 md:gap-4 text-xs md:text-sm mb-4 md:mb-6 flex-wrap">
+            <div className="px-3 py-2 md:px-4 md:py-3 bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-800 rounded-lg">
+              <p className="font-semibold text-red-900 dark:text-red-300 text-xs md:text-sm">
                 ⏰ 13 Months Early Resignation
               </p>
-              <p className="text-red-700 dark:text-red-400">
-                Abandoned 14+ months remaining in 48-month term
+              <p className="text-red-700 dark:text-red-400 text-xs">
+                Left 14+ months early
               </p>
             </div>
-            <div className="px-4 py-3 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-lg">
-              <p className="font-semibold text-amber-900 dark:text-amber-300">
-                📊 33-Month Tenure Average
+            <div className="px-3 py-2 md:px-4 md:py-3 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-lg">
+              <p className="font-semibold text-amber-900 dark:text-amber-300 text-xs md:text-sm">
+                📊 Controversy Frequency
               </p>
-              <p className="text-amber-700 dark:text-amber-400">
-                ~1 major controversy every 10 days
+              <p className="text-amber-700 dark:text-amber-400 text-xs">
+                1 event every 10 days
               </p>
             </div>
           </div>
 
           {/* Filter Buttons */}
-          <div className="flex gap-3 flex-wrap">
+          <div className="flex gap-2 md:gap-3 flex-wrap">
             <button
               onClick={() => setFilterCategory(null)}
-              className={`px-4 py-2 rounded-full font-medium transition-all duration-200 ${
+              className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-sm md:text-base font-medium transition-all duration-200 ${
                 !filterCategory
                   ? 'bg-blue-500 text-white shadow-md'
                   : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
               }`}
             >
-              All Events ({events.length})
+              All ({events.length})
             </button>
             <button
               onClick={() => setFilterCategory('controversy')}
-              className={`px-4 py-2 rounded-full font-medium transition-all duration-200 ${
+              className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-sm md:text-base font-medium transition-all duration-200 ${
                 filterCategory === 'controversy'
                   ? 'bg-red-500 text-white shadow-md'
                   : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
               }`}
             >
-              Controversies ({categoryStats.controversy})
+              Controversy ({categoryStats.controversy})
             </button>
             <button
               onClick={() => setFilterCategory('policy')}
-              className={`px-4 py-2 rounded-full font-medium transition-all duration-200 ${
+              className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-sm md:text-base font-medium transition-all duration-200 ${
                 filterCategory === 'policy'
                   ? 'bg-blue-500 text-white shadow-md'
                   : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
               }`}
             >
-              Policies ({categoryStats.policy})
+              Policy ({categoryStats.policy})
             </button>
             <button
               onClick={() => setFilterCategory('legal')}
-              className={`px-4 py-2 rounded-full font-medium transition-all duration-200 ${
+              className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-sm md:text-base font-medium transition-all duration-200 ${
                 filterCategory === 'legal'
                   ? 'bg-amber-500 text-white shadow-md'
                   : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
@@ -378,13 +378,13 @@ export default function TimelineVisualization() {
       </div>
 
       {/* Timeline */}
-      <div className="max-w-4xl mx-auto px-4 py-20">
+      <div className="max-w-4xl mx-auto px-4 py-8 md:py-20">
         <div className="relative">
           {/* Timeline Line */}
           <div className="absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-400 via-red-400 to-purple-400 dark:from-blue-500 dark:via-red-500 dark:to-purple-500"></div>
 
           {/* Events */}
-          <div className="space-y-12">
+          <div className="space-y-8 md:space-y-12">
             {filteredEvents.map((event, index) => {
               const colors = categoryColors[event.category]
               const isExpanded = expandedId === event.id
@@ -396,14 +396,14 @@ export default function TimelineVisualization() {
               return (
                 <div
                   key={event.id}
-                  className={`relative pl-24 ${!prefersReducedMotion ? 'animate-fadeIn' : ''}`}
+                  className={`relative pl-20 md:pl-24 ${!prefersReducedMotion ? 'animate-fadeIn' : ''}`}
                   style={{
                     marginTop: proportionalGap ? `${proportionalGap * 2}px` : '0',
                   }}
                 >
                   {/* Timeline Dot */}
                   <div
-                    className={`absolute left-0 w-16 h-16 flex items-center justify-center rounded-full ${colors.dot} ring-4 ring-white dark:ring-slate-800 shadow-md cursor-pointer transition-transform duration-300 hover:scale-110`}
+                    className={`absolute left-0 w-12 h-12 md:w-16 md:h-16 flex items-center justify-center rounded-full ${colors.dot} ring-4 ring-white dark:ring-slate-800 shadow-md cursor-pointer transition-transform duration-300 hover:scale-110`}
                     onClick={() => setExpandedId(isExpanded ? null : event.id)}
                     role="button"
                     tabIndex={0}
@@ -415,7 +415,7 @@ export default function TimelineVisualization() {
                     aria-expanded={isExpanded}
                     aria-label={`Timeline event: ${event.narrative}`}
                   >
-                    <span className="text-2xl">{event.icon}</span>
+                    <span className="text-lg md:text-2xl">{event.icon}</span>
                   </div>
 
                   {/* Event Card */}
@@ -428,7 +428,7 @@ export default function TimelineVisualization() {
                     }`}
                   >
                     <div
-                      className={`rounded-lg backdrop-blur-sm border-2 p-6 ${colors.card} ${severityStyles[event.severity]} cursor-pointer group`}
+                      className={`rounded-lg backdrop-blur-sm border-2 p-4 md:p-6 ${colors.card} ${severityStyles[event.severity]} cursor-pointer group`}
                     >
                       {/* Date Badge */}
                       <span
@@ -438,12 +438,12 @@ export default function TimelineVisualization() {
                       </span>
 
                       {/* Finding-Focused Title */}
-                      <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-slate-700 dark:group-hover:text-slate-200 transition-colors">
+                      <h3 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-slate-700 dark:group-hover:text-slate-200 transition-colors">
                         {event.narrative}
                       </h3>
 
                       {/* Description */}
-                      <p className="text-slate-700 dark:text-slate-300 mb-4 leading-relaxed">
+                      <p className="text-sm md:text-base text-slate-700 dark:text-slate-300 mb-4 leading-relaxed">
                         {event.description}
                       </p>
 
@@ -457,7 +457,7 @@ export default function TimelineVisualization() {
                         {event.evidence.map((ev, i) => (
                           <span
                             key={i}
-                            className="text-xs px-2 py-1 bg-white/60 dark:bg-slate-700/60 rounded border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300"
+                            className="text-xs px-2 py-1 bg-white/60 dark:bg-slate-700/60 rounded border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 text-xs"
                           >
                             {ev.type === 'news' && '📰'}
                             {ev.type === 'court' && '⚖️'}
@@ -483,7 +483,7 @@ export default function TimelineVisualization() {
                     {/* Expanded Evidence Section */}
                     {isExpanded && (
                       <div
-                        className={`mt-3 ml-6 p-6 bg-white/60 dark:bg-slate-700/60 rounded-lg border border-slate-200 dark:border-slate-600 backdrop-blur-sm ${
+                        className={`mt-3 ml-6 p-4 md:p-6 bg-white/60 dark:bg-slate-700/60 rounded-lg border border-slate-200 dark:border-slate-600 backdrop-blur-sm ${
                           !prefersReducedMotion ? 'animate-slideDown' : ''
                         }`}
                       >
@@ -525,46 +525,46 @@ export default function TimelineVisualization() {
       </div>
 
       {/* Enhanced Stats Panel */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-900 dark:to-blue-950 text-white py-16">
+      <div className="bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-900 dark:to-blue-950 text-white py-8 md:py-16">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-12">Controversy Index</h2>
+          <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-12">Controversy Index</h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="backdrop-blur-md bg-white/10 rounded-lg p-6 border border-white/20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            <div className="backdrop-blur-md bg-white/10 rounded-lg p-4 md:p-6 border border-white/20">
               <p className="text-blue-100 text-sm font-semibold mb-2">Grade</p>
-              <p className="text-4xl font-bold mb-2">D</p>
-              <p className="text-blue-100 text-sm">
+              <p className="text-3xl md:text-4xl font-bold mb-2">D</p>
+              <p className="text-blue-100 text-xs md:text-sm">
                 State Academic Achievement 2024-25 (Lowest in Decade)
               </p>
             </div>
 
-            <div className="backdrop-blur-md bg-white/10 rounded-lg p-6 border border-white/20">
+            <div className="backdrop-blur-md bg-white/10 rounded-lg p-4 md:p-6 border border-white/20">
               <p className="text-red-200 text-sm font-semibold mb-2">Count</p>
-              <p className="text-4xl font-bold mb-2">7</p>
-              <p className="text-blue-100 text-sm">
+              <p className="text-3xl md:text-4xl font-bold mb-2">7</p>
+              <p className="text-blue-100 text-xs md:text-sm">
                 Major Controversies (~1 every 4.7 months)
               </p>
             </div>
 
-            <div className="backdrop-blur-md bg-white/10 rounded-lg p-6 border border-white/20">
+            <div className="backdrop-blur-md bg-white/10 rounded-lg p-4 md:p-6 border border-white/20">
               <p className="text-amber-200 text-sm font-semibold mb-2">Losses</p>
-              <p className="text-4xl font-bold mb-2">2</p>
-              <p className="text-blue-100 text-sm">
+              <p className="text-3xl md:text-4xl font-bold mb-2">2</p>
+              <p className="text-blue-100 text-xs md:text-sm">
                 Court Losses (Supreme Court overturned policies)
               </p>
             </div>
 
-            <div className="backdrop-blur-md bg-white/10 rounded-lg p-6 border border-white/20">
+            <div className="backdrop-blur-md bg-white/10 rounded-lg p-4 md:p-6 border border-white/20">
               <p className="text-purple-200 text-sm font-semibold mb-2">Settlements</p>
-              <p className="text-4xl font-bold mb-2">$23K</p>
-              <p className="text-blue-100 text-sm">
+              <p className="text-3xl md:text-4xl font-bold mb-2">$23K</p>
+              <p className="text-blue-100 text-xs md:text-sm">
                 Ethics Violations (Campaign finance + misuse)
               </p>
             </div>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="backdrop-blur-md bg-white/10 rounded-lg p-6 border border-white/20">
+          <div className="mt-6 md:mt-12 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+            <div className="backdrop-blur-md bg-white/10 rounded-lg p-4 md:p-6 border border-white/20">
               <h3 className="font-bold mb-4">Event Breakdown</h3>
               <ul className="space-y-2 text-sm">
                 <li className="flex justify-between">
@@ -586,7 +586,7 @@ export default function TimelineVisualization() {
               </ul>
             </div>
 
-            <div className="backdrop-blur-md bg-white/10 rounded-lg p-6 border border-white/20">
+            <div className="backdrop-blur-md bg-white/10 rounded-lg p-4 md:p-6 border border-white/20">
               <h3 className="font-bold mb-4">Timeline Facts</h3>
               <ul className="space-y-2 text-sm">
                 <li>📅 Duration: 33 months (Jan 2023 - Sept 2025)</li>
