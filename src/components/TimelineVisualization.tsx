@@ -866,17 +866,17 @@ export default function TimelineVisualization() {
 
             <div className="rounded-lg p-4 md:p-6 border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-800 shadow-sm hover:shadow-md transition-shadow">
               <p className="text-slate-600 dark:text-slate-400 text-sm font-semibold mb-2">Count</p>
-              <p className="text-3xl md:text-4xl font-bold mb-2">7</p>
+              <p className="text-3xl md:text-4xl font-bold mb-2">8</p>
               <p className="text-slate-600 dark:text-slate-400 text-xs md:text-sm">
-                Major Controversies (~1 every 4.7 months)
+                Major Controversies (~1 every 4.1 months)
               </p>
             </div>
 
             <div className="rounded-lg p-4 md:p-6 border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-800 shadow-sm hover:shadow-md transition-shadow">
               <p className="text-slate-600 dark:text-slate-400 text-sm font-semibold mb-2">Losses</p>
-              <p className="text-3xl md:text-4xl font-bold mb-2">2</p>
+              <p className="text-3xl md:text-4xl font-bold mb-2">1</p>
               <p className="text-slate-600 dark:text-slate-400 text-xs md:text-sm">
-                Court Losses (Supreme Court overturned policies)
+                Supreme Court Decision (Blocked controversial curriculum)
               </p>
             </div>
 
@@ -918,7 +918,7 @@ export default function TimelineVisualization() {
                 <li>📅 Duration: 33 months (Jan 2023 - Sept 2025)</li>
                 <li>⏰ Expected: 48 months (4-year term)</li>
                 <li>❌ Early Exit: 14+ months remaining</li>
-                <li>📊 Avg Controversy: Every 10.5 days</li>
+                <li>📊 Avg Crisis Frequency: Every 50 days (~7 weeks)</li>
               </ul>
             </div>
           </div>
