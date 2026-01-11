@@ -9,16 +9,18 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        heading: ['Poppins', 'sans-serif'],
-        body: ['Open Sans', 'sans-serif'],
+        heading: ['Playfair Display', 'serif'],
+        body: ['Lato', 'sans-serif'],
+        accent: ['Poppins', 'sans-serif'],
       },
       colors: {
-        primary: '#2563EB',
-        secondary: '#3B82F6',
-        cta: '#F97316',
-        success: '#10B981',
-        warning: '#F59E0B',
-        error: '#EF4444',
+        primary: '#50bff5',
+        secondary: '#31f5e3',
+        cta: '#50bff5',
+        success: '#31f5e3',
+        warning: '#fbbf24',
+        error: '#ef4444',
+        neutral: '#1f2937',
       },
       animation: {
         fadeIn: 'fadeIn 0.6s ease-out',

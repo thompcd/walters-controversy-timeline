@@ -300,33 +300,33 @@ export default function TimelineVisualization() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
+    <div className="min-h-screen bg-white dark:bg-slate-950">
       {/* Header Banner */}
-      <div className="sticky top-0 z-40 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-700">
+      <div className="sticky top-0 z-40 bg-white/95 dark:bg-slate-950/95 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800">
         <div className="max-w-6xl mx-auto px-4 py-3 md:py-6">
-          <h1 className="text-2xl md:text-4xl font-bold text-slate-900 dark:text-white mb-1 md:mb-2">
+          <h1 className="text-2xl md:text-5xl font-heading font-bold text-slate-900 dark:text-white mb-1 md:mb-2 tracking-tight">
             The Ryan Walters Era
           </h1>
-          <p className="text-xs md:text-lg text-slate-600 dark:text-slate-300 mb-3 md:mb-4">
+          <p className="text-xs md:text-lg text-slate-600 dark:text-slate-400 font-body mb-3 md:mb-4 font-light">
             A Timeline of Controversy, Policy Crisis, and Early Exit
           </p>
 
-          {/* Context Callout */}
+          {/* Context Callout - Elegant Cards */}
           <div className="flex gap-2 md:gap-4 text-xs md:text-sm mb-4 md:mb-6 flex-wrap">
-            <div className="px-3 py-2 md:px-4 md:py-3 bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-800 rounded-lg">
-              <p className="font-semibold text-red-900 dark:text-red-300 text-xs md:text-sm">
-                ⏰ 13 Months Early Resignation
+            <div className="px-3 py-2 md:px-4 md:py-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+              <p className="font-heading font-semibold text-slate-900 dark:text-white text-xs md:text-sm">
+                ⏰ 13 Months Early
               </p>
-              <p className="text-red-700 dark:text-red-400 text-xs">
-                Left 14+ months early
+              <p className="text-slate-600 dark:text-slate-400 text-xs font-body">
+                Abandoned 14+ months remaining
               </p>
             </div>
-            <div className="px-3 py-2 md:px-4 md:py-3 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-lg">
-              <p className="font-semibold text-amber-900 dark:text-amber-300 text-xs md:text-sm">
-                📊 Controversy Frequency
+            <div className="px-3 py-2 md:px-4 md:py-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+              <p className="font-heading font-semibold text-slate-900 dark:text-white text-xs md:text-sm">
+                📊 1 Crisis Every 10 Days
               </p>
-              <p className="text-amber-700 dark:text-amber-400 text-xs">
-                1 event every 10 days
+              <p className="text-slate-600 dark:text-slate-400 text-xs font-body">
+                ~40x typical frequency
               </p>
             </div>
           </div>
@@ -335,40 +335,41 @@ export default function TimelineVisualization() {
           <div className="flex gap-2 md:gap-3 flex-wrap">
             <button
               onClick={() => setFilterCategory(null)}
-              className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-sm md:text-base font-medium transition-all duration-200 ${
+              className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-sm md:text-base font-medium transition-all duration-200 border ${
                 !filterCategory
-                  ? 'bg-blue-500 text-white shadow-md'
-                  : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
+                  ? 'bg-gradient-to-r from-cyan-400 to-emerald-300 text-white shadow-md border-transparent'
+                  : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-300'
               }`}
+              style={!filterCategory ? {background: 'linear-gradient(145deg, #50bff5 10%, #31f5e3 100%)'} : {}}
             >
               All ({events.length})
             </button>
             <button
               onClick={() => setFilterCategory('controversy')}
-              className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-sm md:text-base font-medium transition-all duration-200 ${
+              className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-sm md:text-base font-medium transition-all duration-200 border ${
                 filterCategory === 'controversy'
-                  ? 'bg-red-500 text-white shadow-md'
-                  : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
+                  ? 'bg-red-500 text-white shadow-md border-transparent'
+                  : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-300'
               }`}
             >
               Controversy ({categoryStats.controversy})
             </button>
             <button
               onClick={() => setFilterCategory('policy')}
-              className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-sm md:text-base font-medium transition-all duration-200 ${
+              className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-sm md:text-base font-medium transition-all duration-200 border ${
                 filterCategory === 'policy'
-                  ? 'bg-blue-500 text-white shadow-md'
-                  : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
+                  ? 'bg-blue-500 text-white shadow-md border-transparent'
+                  : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-300'
               }`}
             >
               Policy ({categoryStats.policy})
             </button>
             <button
               onClick={() => setFilterCategory('legal')}
-              className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-sm md:text-base font-medium transition-all duration-200 ${
+              className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-sm md:text-base font-medium transition-all duration-200 border ${
                 filterCategory === 'legal'
-                  ? 'bg-amber-500 text-white shadow-md'
-                  : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
+                  ? 'bg-amber-500 text-white shadow-md border-transparent'
+                  : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-300'
               }`}
             >
               Legal ({categoryStats.legal})
@@ -380,8 +381,8 @@ export default function TimelineVisualization() {
       {/* Timeline */}
       <div className="max-w-4xl mx-auto px-4 py-8 md:py-20">
         <div className="relative">
-          {/* Timeline Line */}
-          <div className="absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-400 via-red-400 to-purple-400 dark:from-blue-500 dark:via-red-500 dark:to-purple-500"></div>
+          {/* Timeline Line - Elegant Gradient */}
+          <div className="absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-cyan-400 via-cyan-300 to-emerald-300" style={{background: 'linear-gradient(180deg, #50bff5 0%, #31f5e3 100%)'}}></div>
 
           {/* Events */}
           <div className="space-y-8 md:space-y-12">
@@ -524,48 +525,48 @@ export default function TimelineVisualization() {
         </div>
       </div>
 
-      {/* Enhanced Stats Panel */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-900 dark:to-blue-950 text-white py-8 md:py-16">
+      {/* Enhanced Stats Panel - Elegant Gradient */}
+      <div className="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-8 md:py-16">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-12">Controversy Index</h2>
+          <h2 className="text-2xl md:text-3xl font-heading font-bold mb-6 md:mb-12 text-slate-900 dark:text-white">Controversy Index</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-            <div className="backdrop-blur-md bg-white/10 rounded-lg p-4 md:p-6 border border-white/20">
-              <p className="text-blue-100 text-sm font-semibold mb-2">Grade</p>
+            <div className="rounded-lg p-4 md:p-6 border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-800 shadow-sm hover:shadow-md transition-shadow">
+              <p className="text-slate-600 dark:text-slate-400 text-sm font-semibold mb-2">Grade</p>
               <p className="text-3xl md:text-4xl font-bold mb-2">D</p>
-              <p className="text-blue-100 text-xs md:text-sm">
+              <p className="text-slate-600 dark:text-slate-400 text-xs md:text-sm">
                 State Academic Achievement 2024-25 (Lowest in Decade)
               </p>
             </div>
 
-            <div className="backdrop-blur-md bg-white/10 rounded-lg p-4 md:p-6 border border-white/20">
-              <p className="text-red-200 text-sm font-semibold mb-2">Count</p>
+            <div className="rounded-lg p-4 md:p-6 border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-800 shadow-sm hover:shadow-md transition-shadow">
+              <p className="text-slate-600 dark:text-slate-400 text-sm font-semibold mb-2">Count</p>
               <p className="text-3xl md:text-4xl font-bold mb-2">7</p>
-              <p className="text-blue-100 text-xs md:text-sm">
+              <p className="text-slate-600 dark:text-slate-400 text-xs md:text-sm">
                 Major Controversies (~1 every 4.7 months)
               </p>
             </div>
 
-            <div className="backdrop-blur-md bg-white/10 rounded-lg p-4 md:p-6 border border-white/20">
-              <p className="text-amber-200 text-sm font-semibold mb-2">Losses</p>
+            <div className="rounded-lg p-4 md:p-6 border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-800 shadow-sm hover:shadow-md transition-shadow">
+              <p className="text-slate-600 dark:text-slate-400 text-sm font-semibold mb-2">Losses</p>
               <p className="text-3xl md:text-4xl font-bold mb-2">2</p>
-              <p className="text-blue-100 text-xs md:text-sm">
+              <p className="text-slate-600 dark:text-slate-400 text-xs md:text-sm">
                 Court Losses (Supreme Court overturned policies)
               </p>
             </div>
 
-            <div className="backdrop-blur-md bg-white/10 rounded-lg p-4 md:p-6 border border-white/20">
-              <p className="text-purple-200 text-sm font-semibold mb-2">Settlements</p>
+            <div className="rounded-lg p-4 md:p-6 border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-800 shadow-sm hover:shadow-md transition-shadow">
+              <p className="text-slate-600 dark:text-slate-400 text-sm font-semibold mb-2">Settlements</p>
               <p className="text-3xl md:text-4xl font-bold mb-2">$23K</p>
-              <p className="text-blue-100 text-xs md:text-sm">
+              <p className="text-slate-600 dark:text-slate-400 text-xs md:text-sm">
                 Ethics Violations (Campaign finance + misuse)
               </p>
             </div>
           </div>
 
           <div className="mt-6 md:mt-12 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-            <div className="backdrop-blur-md bg-white/10 rounded-lg p-4 md:p-6 border border-white/20">
-              <h3 className="font-bold mb-4">Event Breakdown</h3>
+            <div className="rounded-lg p-4 md:p-6 border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-800 shadow-sm hover:shadow-md transition-shadow">
+              <h3 className="font-heading font-bold mb-4 text-slate-900 dark:text-white">Event Breakdown</h3>
               <ul className="space-y-2 text-sm">
                 <li className="flex justify-between">
                   <span>🔴 Controversies & Conflicts</span>
@@ -586,8 +587,8 @@ export default function TimelineVisualization() {
               </ul>
             </div>
 
-            <div className="backdrop-blur-md bg-white/10 rounded-lg p-4 md:p-6 border border-white/20">
-              <h3 className="font-bold mb-4">Timeline Facts</h3>
+            <div className="rounded-lg p-4 md:p-6 border border-slate-200 dark:border-slate-800 bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-800 shadow-sm hover:shadow-md transition-shadow">
+              <h3 className="font-heading font-bold mb-4 text-slate-900 dark:text-white">Timeline Facts</h3>
               <ul className="space-y-2 text-sm">
                 <li>📅 Duration: 33 months (Jan 2023 - Sept 2025)</li>
                 <li>⏰ Expected: 48 months (4-year term)</li>
